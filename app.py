@@ -21,7 +21,10 @@ st.set_page_config(page_title="コミュニケーション診断")
 st.title("📊 コミュニケーション診断")
 
 scores = {"A": 0, "B": 0, "C": 0, "D": 0}
-options = {1: "あてはまらない", 2: "あまりあてはまらない", 3: "あてはまる", 4: "よくあてはまる"}
+options = {4: "よくあてはまる",
+    3: "あてはまる",
+    2: "あまりあてはまらない",
+    1: "あてはまらない"}
 
 with st.form("survey_form"):
     for q_text, cat in questions:
