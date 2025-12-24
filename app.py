@@ -28,7 +28,7 @@ options = {4: "よくあてはまる",
 
 with st.form("survey_form"):
     for q_text, cat in questions:
-        res = st.radio(q_text, options=[1, 2, 3, 4], format_func=lambda x: options[x], horizontal=True)
+        res = st.radio(q_text, options=[4,3,2,1], format_func=lambda x: options[x], horizontal=True)
         scores[cat] += res
     
     submitted = st.form_submit_button("診断結果を表示する")
