@@ -32,8 +32,13 @@ with st.form("survey_form"):
 
 if submitted:
     st.divider()
-    max_type = max(scores, key=scores.get)
-    st.header(f"結果：あなたは 「{type_names[max_type]}」 タイプです")
+    # 最大スコアを特定
+    max_val = max(scores.values())
+    # 最大スコアと同じスコアを持つタイプをすべてリストアップ
+    max_types = [k for k, v in scores.items() if v == max_val]
     
-    res_df = pd.DataFrame([{"タイプ": type_names[k], "スコア": v} for k, v in scores.items()])
-    st.bar_chart(res_df.set_index("タイプ"))
+    # タイプ名を取得して「・」でつなぐ
+    result_names = [type_names[t] for t in max_types]
+    result_text = " ・ ".join(result_names)
+    
+    st.header(f"結果：あなたは 「{result_text}」 タイプです")
